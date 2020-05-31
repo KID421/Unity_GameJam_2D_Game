@@ -36,8 +36,9 @@ namespace KID
         /// </summary>
         private void UpdateOrder()
         {
-            // 更新圖片.順序 = 數學.去小數點轉整數(角色 Y 軸 + 位移量 * -100 單位)
-            spr.sortingOrder = Mathf.RoundToInt((transform.position.y + offset) * -100);
+            // 更新圖片.順序 = 數學.去小數點轉整數(角色 Y 軸 + 位移量 * -100 單位 + 5000)
+            // + 5000 避免跑到背景後面
+            spr.sortingOrder = Mathf.RoundToInt((transform.position.y + offset) * -100) + 5000;
         }
 
         /// <summary>
