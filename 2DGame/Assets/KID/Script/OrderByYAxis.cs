@@ -6,6 +6,8 @@ namespace KID
     {
         [Header("位移 - 建議讓紅點調整到角色腳底下")]
         public float offset;
+        [Header("是否為會移動的物件")]
+        public bool isMoveObject;
 
         /// <summary>
         /// 圖片渲染元件
@@ -16,10 +18,16 @@ namespace KID
         {
             // 圖片渲染元件 = 取得元件<圖片渲染元件>();
             spr = GetComponent<SpriteRenderer>();
+
+            // 更新順序
+            UpdateOrder();
         }
 
         private void Update()
         {
+            // 如果為不回移動的物件就跳出，降低效能消耗
+            if (!isMoveObject) return;
+
             UpdateOrder();
         }
 
